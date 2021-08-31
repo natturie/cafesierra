@@ -6,11 +6,12 @@
       <table class="pedido-table">
         <thead>
           <tr>
-            <th>ID</th>
-            <th>pedidoname</th>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Correo</th>
+            <th>ID pedido</th>
+            <th>Cliente</th>
+            <th>N° prods</th>
+            <th>IVA</th>
+            <th>Total</th>
+            <th>Puntos</th>
             <th>Editar</th>
             <th>Elimnar</th>
           </tr>
@@ -18,10 +19,11 @@
         <tbody>
           <tr>
             <td>0000</td>
-            <td>pepita</td>
-            <td>Pepa</td>
-            <td>Perez</td>
-            <td>pepita@gmail.com</td>
+            <td>1000324980</td>
+            <td>3</td>
+            <td>1900</td>
+            <td>10000</td>
+            <td>10</td>
             <td>
               <button><img src="../assets/editar.png" alt="editar" /></button>
             </td>
@@ -31,12 +33,13 @@
               </button>
             </td>
           </tr>
-         <tr>
+          <tr>
             <td>0000</td>
-            <td>pepita</td>
-            <td>Pepa</td>
-            <td>Perez</td>
-            <td>pepita@gmail.com</td>
+            <td>1000324980</td>
+            <td>3</td>
+            <td>1900</td>
+            <td>10000</td>
+            <td>10</td>
             <td>
               <button><img src="../assets/editar.png" alt="editar" /></button>
             </td>
