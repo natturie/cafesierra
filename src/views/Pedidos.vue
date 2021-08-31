@@ -12,7 +12,6 @@
             <th>IVA</th>
             <th>Total</th>
             <th>Puntos</th>
-            <th>Editar</th>
             <th>Elimnar</th>
           </tr>
         </thead>
@@ -24,9 +23,6 @@
             <td>1900</td>
             <td>10000</td>
             <td>10</td>
-            <td>
-              <button><img src="../assets/editar.png" alt="editar" /></button>
-            </td>
             <td>
               <button>
                 <img src="../assets/eliminar.png" alt="eliminar" />
@@ -40,9 +36,6 @@
             <td>1900</td>
             <td>10000</td>
             <td>10</td>
-            <td>
-              <button><img src="../assets/editar.png" alt="editar" /></button>
-            </td>
             <td>
               <button>
                 <img src="../assets/eliminar.png" alt="eliminar" />
