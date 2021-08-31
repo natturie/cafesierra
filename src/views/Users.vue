@@ -92,5 +92,6 @@ h3 {
 .user-table button {
   border: none;
   cursor: pointer;
+  background: none;
 }
 </style>

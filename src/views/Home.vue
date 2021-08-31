@@ -4,8 +4,8 @@
       <div class="formulario">
         <h1 class="tituloInicio">Sierra Café</h1>
         <h3 class="eslogan">De las montañas a tu mesa</h3>
-        <router-link to="/login"><button class="btnIngreso"><a>Ingresar</a></button></router-link>
-        <router-link to="/signup"><button class="btnRegistro"><a>Registro</a></button></router-link> 
+        <router-link to="/login"><button class="btnIngreso">Ingresar</button></router-link>
+        <router-link to="/signup"><button class="btnRegistro">Registro</button></router-link> 
     </div>
   </div>
 </template>
@@ -61,5 +61,6 @@
   border-radius: 40px;
   margin: 10px 0;
   border-width: 0;
+  cursor: pointer;
 }
 </style>

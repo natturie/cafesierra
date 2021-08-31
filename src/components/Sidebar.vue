@@ -5,18 +5,28 @@
         <img class="logo" src="../assets/logo.png" alt="logo sierra" />
       </div>
       <nav class="navegacion">
-        <li><router-link class="router-bot" to="/costumers">Clientes</router-link></li>
-        <li><router-link class="router-bot" to="/products">Productos</router-link></li>
-        <li><router-link class="router-bot" to="/invoice">Facturar</router-link></li>
+        <li>
+          <router-link class="router-bot" to="/costumers">Clientes</router-link>
+        </li>
+        <li>
+          <router-link class="router-bot" to="/products">Productos</router-link>
+        </li>
+        <li>
+          <router-link class="router-bot" to="/invoice">Facturar</router-link>
+        </li>
       </nav>
       <div class="menu-botones">
-        <router-link class="router-bot" to="/users"><img class="logo-usuarios" src="../assets/logo-usuarios.png" alt="" /></router-link>
-        <router-link class="router-bot" to="/pedidos"><img class="logo-pedidos" src="../assets/logo-pedidos.png" alt="" /></router-link>
+        <router-link class="router-bot" to="/users"
+          ><img class="logo-usuarios" src="../assets/logo-usuarios.png" alt=""
+        /></router-link>
+        <router-link class="router-bot" to="/pedidos"
+          ><img class="logo-pedidos" src="../assets/logo-pedidos.png" alt=""
+        /></router-link>
       </div>
     </aside>
     <div class="hola">
       <!-- En este mensaje debería ir el nombre del usuario -->
-      <h2>Hola {{ msg }}!</h2>
+      <h3>Hola {{ msg }}!</h3>
       <button><img src="../assets/logo-logout.png" alt="" /></button>
     </div>
   </div>
@@ -32,7 +42,6 @@ export default {
 </script>
 
 <style scoped>
-
 .side-menu {
   background: #224957;
   width: 20%;
@@ -59,31 +68,29 @@ export default {
   margin: 20px;
   text-align: center;
   font-family: "Lexend", sans-serif;
-  font-size: 26px;
+  font-size: 24px;
   cursor: pointer;
 }
 
-.router-bot{
-text-decoration: none;
-color: #ffff;
+.router-bot {
+  text-decoration: none;
+  color: #ffff;
 }
 
 .menu-botones {
-  margin-top: 120px;
+  margin-top: 130px;
 }
 
-
 .logo-usuarios {
-  width: 100px;
+  width: 90px;
   padding-right: 13px;
   cursor: pointer;
 }
 
 .logo-pedidos {
-  width: 90px;
+  width: 80px;
   padding-left: 13px;
   cursor: pointer;
-
 }
 
 .hola {
@@ -101,13 +108,19 @@ color: #ffff;
   color: #224957;
 }
 
-.hola button{
- border: none;
- cursor: pointer;
- margin-left: 25px;
+/* .hola h3 {
+  font-size: 26px;
+} */
+
+.hola button {
+  padding: 0 5px;
+  margin-left: 15px;
+  border: none;
+  cursor: pointer;
+  background: none;
 }
 
 .hola img {
-  width: 70px;
+  width: 60px;
 }
 </style>

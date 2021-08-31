@@ -108,5 +108,6 @@ color: #224957;
 .costumer-table button {
   border: none;
   cursor: pointer;
+  background: none;
 }
 </style>

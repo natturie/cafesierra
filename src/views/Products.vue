@@ -95,5 +95,6 @@ color: #224957;
 .product-table button{
   border: none;
   cursor: pointer;
+  background: none;
 }
 </style>

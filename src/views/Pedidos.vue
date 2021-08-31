@@ -88,5 +88,6 @@ h3 {
 .pedido-table button {
   border: none;
   cursor: pointer;
+  background: none;
 }
 </style>
