@@ -1,9 +1,9 @@
 <template>
   <div class="menu">
     <aside class="side-menu">
-      <div>
+      <router-link class="router-bot" to="/welcome">
         <img class="logo" src="../assets/logo.png" alt="logo sierra" />
-      </div>
+      </router-link>
       <nav class="navegacion">
         <li>
           <router-link class="router-bot" to="/costumers">Clientes</router-link>
@@ -56,7 +56,7 @@ export default {
 
 .logo {
   width: 100px;
-  padding: 20px 0;
+  padding: 20px 0 10px 0;
 }
 
 .navegacion li {
@@ -64,8 +64,8 @@ export default {
   border: blueviolet 2px solid;
   border-radius: 8px;
   list-style: none;
-  padding: 10px;
-  margin: 20px;
+  padding: 12px;
+  margin: 10px;
   text-align: center;
   font-family: "Lexend", sans-serif;
   font-size: 24px;
@@ -78,17 +78,17 @@ export default {
 }
 
 .menu-botones {
-  margin-top: 130px;
+margin-top: 180px;
 }
 
 .logo-usuarios {
-  width: 90px;
+  width: 80px;
   padding-right: 13px;
   cursor: pointer;
 }
 
 .logo-pedidos {
-  width: 80px;
+  width: 70px;
   padding-left: 13px;
   cursor: pointer;
 }
