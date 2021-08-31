@@ -78,7 +78,7 @@ export default {
 }
 
 .menu-botones {
-margin-top: 180px;
+margin-top: 190px;
 }
 
 .logo-usuarios {
