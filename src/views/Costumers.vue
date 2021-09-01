@@ -80,7 +80,7 @@ h3 {
 .add-costumer {
   background: #20DF7F;
   margin-left: 35px;
-  padding: 5px 14px;
+  padding: 8px 16px;
   font-size: 25px;
   border: none;
   border-radius: 8px;

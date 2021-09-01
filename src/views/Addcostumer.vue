@@ -2,7 +2,7 @@
   <div class="agregarcost">
       <sidebar msg="Pepito" />
     <div class="form-agregarcost">
-        <h2>Agregar cliente</h2>
+        <h2>Cliente nuevo</h2>
       <div class="flex-signup">
         <input type="text" placeholder="nombre" />
         <input type="text" placeholder="apellido" />

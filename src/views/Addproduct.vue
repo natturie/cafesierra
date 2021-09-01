@@ -2,7 +2,7 @@
   <div class="agregarprod">
       <sidebar msg="Pepito" />
     <div class="form-agregarprod">
-        <h2>Agregar producto</h2>
+        <h2>Producto nuevo</h2>
       <div class="flex-signup">
         <input type="text" placeholder="nombre" />
         <input type="text" placeholder="categoria" />
@@ -49,15 +49,14 @@ export default {
     color: #224957;
 }
 
-.form-agregarprod input, .rol {
+.form-agregarprod input {
   border-radius: 5px;
   width: 290px;
   height: 45px;
   margin: 5px 20px;
 }
 
-::placeholder, .rol {
-  
+::placeholder {
   font-size: 18px;
   padding: 5px 10px;
 }

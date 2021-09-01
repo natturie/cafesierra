@@ -12,7 +12,7 @@
           <router-link class="router-bot" to="/products">Productos</router-link>
         </li>
         <li>
-          <router-link class="router-bot" to="/invoice">Facturar</router-link>
+          <router-link class="router-bot" to="/order">Facturar</router-link>
         </li>
       </nav>
       <div class="menu-botones">

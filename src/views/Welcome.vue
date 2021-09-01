@@ -3,8 +3,7 @@
     <sidebar msg="Pepito" />
     <div class="holacafe">
       <h2>Bienvenido a Sierra Café</h2>
-      <div class="imagen-welcome">
-        
+      <div class="imagen-welcome"> 
         <p>
           El grano de la Sierra es cultivado bajo la sombra de árboles nativos
           (como el nogal cafetero y el guamo santafereño) que crecen en el
@@ -50,6 +49,7 @@ export default {
   align-items: center;
   align-content: center;
   font-size: 20px;
+  color: rgb(68, 57, 57);
   text-align: justify;
   margin-top: 40px;
   
