@@ -4,7 +4,7 @@
     <div class="tabla-costumer">
       <h3>Clientes</h3>
 
-      <button class="add-costumer"><router-link class="router-bot" to="/add-costumers">Agregar cliente</router-link></button>
+      <button class="add-costumer"><router-link class="router-bot" to="/addcostumer">Agregar cliente</router-link></button>
       <table class="costumer-table">
         <thead>
           <tr>

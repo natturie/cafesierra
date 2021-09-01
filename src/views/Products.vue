@@ -3,7 +3,7 @@
     <sidebar msg="Pepito" />
     <div class="tabla-product">
         <h3>Productos</h3>
-        <button class="add-product"><router-link class="router-bot" to="/add-product">Agregar producto</router-link></button>
+        <button class="add-product"><router-link class="router-bot" to="/addproduct">Agregar producto</router-link></button>
       <table class="product-table">
         <thead>
             <tr>
