@@ -1,11 +1,11 @@
 <template>
   <div class="login">
     <formulario-inicio msg="Ingresar"/> 
-    <div class="capa-login">
-        <input class="input-form" type="email" placeholder="email" >
-        <input type="password" placeholder="password" >
-        <button>Login</button>
-    </div>
+    <form class="capa-login"  @submit.prevent="authenticate">
+        <input class="input-form" type="text" placeholder="username" v-model="username">
+        <input type="password" placeholder="password" v-model="password">
+        <button type="submit">Login</button>
+    </form>
     <router-link to="/"><img class="back-home" src="../assets/home.png" alt="back home"></router-link>
   </div>
 </template>
@@ -13,13 +13,59 @@
 <script>
 //  @ is an alias to /src
 import FormularioInicio from '../components/FormularioInicio.vue'
+import gql from "graphql-tag";
+//import jwtDecode from 'jwt-decode'
 
  export default {
    name: 'FormularioLogin',
+
    components: {
      FormularioInicio
-   }
- }
+   },
+
+   data() {
+    return {
+      username: '',
+      password: ''
+    }
+  },
+
+   methods: {
+    async authenticate() {
+      await this.$apollo.mutate({
+        mutation: gql`
+          mutation AuthenticateMutation($authenticateCredentials: CredentialsInput!) {
+                  authenticate(credentials: $authenticateCredentials) {
+                  token
+                  }
+          }`,
+        variables: {
+          authenticateCredentials: {
+            username: this.username,
+            password: this.password
+          }
+        },
+        
+      })
+      .then(result => {
+        let data = result.data.authenticate
+        this.setUserData(data)
+      })
+      .catch((e) => {
+        alert('ERROR: Invalid credentials !!')
+        console.log(e);
+      })
+    },
+    setUserData(data) {
+      console.log(data)
+      localStorage.setItem('token', data.token)
+      localStorage.setItem('username', this.username)
+      this.$emit('logged')
+      this.$router.push({ name: 'Welcome' })
+    }
+  }
+}
+
 </script>
 
 <style>

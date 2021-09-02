@@ -5,7 +5,7 @@
       <h3>Clientes</h3>
 
       <button class="add-costumer"><router-link class="router-bot" to="/addcostumer">Agregar cliente</router-link></button>
-      <table class="costumer-table">
+      <table class="costumer-table" v-if="clientAll.length > 0">
         <thead>
           <tr>
             <th>ID</th>
@@ -18,22 +18,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>0000</td>
-            <td>Pepita Perez</td>
-            <td>1000111333</td>
-            <td>pepita@gmail.com</td>
-            <td>123</td>
-            <td>
-              <button><img src="../assets/editar.png" alt="editar" /></button>
-            </td>
-            <td>
-              <button>
-                <img src="../assets/eliminar.png" alt="eliminar" />
-              </button>
-            </td>
-          </tr>
-         <tr>
+          <tr v-for="client in clientAll" :key="client.id">
             <td>0000</td>
             <td>Pepita Perez</td>
             <td>1000111333</td>
@@ -56,11 +41,44 @@
 
 <script>
 import Sidebar from "../components/Sidebar.vue";
+import gql from 'graphql-tag'
+
 export default {
   name: "Costumers",
   components: {
     Sidebar,
   },
+
+  data() {
+    return {
+      username: null,
+      clientAll: []
+    }
+  },
+
+  created() {
+    this.username = localStorage.getItem('username')
+  },
+
+  apollo: {
+    clientAll: {
+      query: gql`
+        query Query {
+        clientAll {
+          id,
+          nombres,
+          apellidos,
+          identificacion,
+          correo,
+          puntos
+          }
+      }
+      `,
+      variables: {
+        username: localStorage.getItem('username')
+      }
+    }
+  }
 };
 </script>
 <style scoped>

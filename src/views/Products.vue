@@ -4,7 +4,7 @@
     <div class="tabla-product">
         <h3>Productos</h3>
         <button class="add-product"><router-link class="router-bot" to="/addproduct">Agregar producto</router-link></button>
-      <table class="product-table">
+      <table class="product-table" v-if="productAll.length > 0">
         <thead>
             <tr>
           <th>Nombre</th>
@@ -17,23 +17,15 @@
         </thead>
         <tbody>
 
-            <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
+            <tr v-for="product in productAll" :key="product.id">
+            <td>{{product.productName}}</td>
+            <td>{{product.category}}</td>
+            <td>{{product.stock}}</td>
+            <td>{{product.price}}</td>
             <td><button><img src="../assets/editar.png" alt="editar"></button></td>
             <td><button><img src="../assets/eliminar.png" alt="eliminar"></button></td>
             </tr>
 
-            <tr>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td><button><img src="../assets/editar.png" alt="editar"></button></td>
-            <td><button><img src="../assets/eliminar.png" alt="eliminar"></button></td>
-            </tr>
         </tbody>
       </table>
     </div>
@@ -42,11 +34,41 @@
 
 <script>
 import Sidebar from "../components/Sidebar.vue";
+import gql from 'graphql-tag'
+
 export default {
   name: "Products",
   components: {
     Sidebar,
   },
+  data() {
+    return {
+      username: null,
+      productAll: []
+    }
+  },
+
+  created() {
+    this.username = localStorage.getItem('username')
+  },
+  apollo: {
+    productAll: {
+      query: gql`
+        query Query {
+          productAll {
+            id,
+            productName,
+            category,
+            stock,
+            price
+          }
+        }
+      `,
+      variables: {
+        username: localStorage.getItem('username')
+      }
+    }
+  }
 };
 </script>
 <style scoped>
