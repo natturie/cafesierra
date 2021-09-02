@@ -4,11 +4,14 @@
     <div class="tabla-customer">
       <h3>Clientes</h3>
 
-      <button class="add-customer"><router-link class="router-bot" to="/addcustomer">Agregar cliente</router-link></button>
-      <table class="customer-table" v-if="clientAll.length > 0" >
+      <button class="add-customer">
+        <router-link class="router-bot" to="/addcustomer"
+          >Agregar cliente</router-link
+        >
+      </button>
+      <table class="customer-table" v-if="clientAll.length > 0">
         <thead>
           <tr>
-           
             <th>Nombre</th>
             <th>cc</th>
             <th>mail</th>
@@ -19,17 +22,16 @@
         </thead>
         <tbody>
           <tr v-for="client in clientAll" :key="client.id">
-            
-            <td>{{client.nombres}} {{client.apellidos}}</td>
-            <td>{{client.identificacion}}</td>
-            <td>{{client.correo}}</td>
-            <td>{{client.puntos}}</td>
+            <td>{{ client.nombres }} {{ client.apellidos }}</td>
+            <td>{{ client.identificacion }}</td>
+            <td>{{ client.correo }}</td>
+            <td>{{ client.puntos }}</td>
             <td>
               <button v-on:click="editClient(client.id)">
                 <img src="../assets/editar.png" alt="editar" />
               </button>
             </td>
-            <td >
+            <td>
               <button v-on:click="clienteDelete(client.id)">
                 <img src="../assets/eliminar.png" alt="eliminar" />
               </button>
@@ -43,7 +45,8 @@
 
 <script>
 import Sidebar from "../components/Sidebar.vue";
-import gql from 'graphql-tag'
+import gql from "graphql-tag";
+import Swal from "sweetalert2";
 
 export default {
   name: "Customers",
@@ -54,66 +57,79 @@ export default {
   data() {
     return {
       username: null,
-      clientAll: []
-    }
+      clientAll: [],
+    };
   },
 
   created() {
-    this.username = localStorage.getItem('username')
+    this.username = localStorage.getItem("username");
   },
 
   apollo: {
     clientAll: {
       query: gql`
         query Query {
-        clientAll {
-          id,
-          nombres,
-          apellidos,
-          identificacion,
-          correo,
-          puntos
+          clientAll {
+            id
+            nombres
+            apellidos
+            identificacion
+            correo
+            puntos
           }
-      }`,
+        }
+      `,
       variables: {
-        username: localStorage.getItem('username')
-      }
+        username: localStorage.getItem("username"),
+      },
     },
-    
   },
 
   methods: {
-    
     async clienteDelete(id) {
-      console.log(id)
+      console.log(id);
       await this.$apollo.mutate({
         mutation: gql`
           mutation ClientDeleteMutation($clientDeleteId: String!) {
             clientDelete(id: $clientDeleteId) {
               Status
             }
-          }`,
+          }
+        `,
 
         variables: {
-          clientDeleteId: id
+          clientDeleteId: id,
         },
-        
+      });
+      Swal.fire({
+        title: "Deseas eliminar el cliente?",
+        text: "Esta accion no se puede deshacer",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Si, Eliminar",
+        cancelButtonText: "Cancelar",
       })
-      .then(result => {
-        alert('eliminado exitosamente!')
-        console.log(result)
-      })
-      .catch((e) => {
-        alert('No se pudo eliminar el cliente')
-        console.log(e);
-      })
+        .then((result) => {
+          if (result.isConfirmed) {
+            Swal.fire("Eliminado!", "success");
+            console.log(result);
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+            Swal.fire("Cancelado");
+          }
+        })
+        .catch((e) => {
+          alert("No se pudo eliminar el cliente");
+          console.log(e);
+        });
     },
 
-    editClient(id){
-      console.log(id)
-      this.$router.push({ name: 'EditCustomer' })
-   },
-  }
+    editClient(id) {
+      console.log(id);
+      this.$router.push({ name: "EditCustomer" });
+    },
+  },
 };
 </script>
 <style scoped>
@@ -131,7 +147,7 @@ h3 {
   margin-left: 35px;
 }
 .add-customer {
-  background: #20DF7F;
+  background: #20df7f;
   margin-left: 35px;
   padding: 8px 16px;
   font-size: 25px;
@@ -140,9 +156,9 @@ h3 {
   cursor: pointer;
 }
 
-.router-bot{
-text-decoration: none;
-color: #224957;
+.router-bot {
+  text-decoration: none;
+  color: #224957;
 }
 
 .customer-table {
@@ -163,5 +179,4 @@ color: #224957;
   cursor: pointer;
   background: none;
 }
-
 </style>
