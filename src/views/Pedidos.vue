@@ -55,6 +55,13 @@ export default {
   components: {
     Sidebar,
   },
+  data() {
+    return {
+      username: null,
+      productAll: []
+    }
+  },
+  
 };
 </script>
 <style scoped>
