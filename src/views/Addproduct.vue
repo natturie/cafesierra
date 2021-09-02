@@ -105,6 +105,7 @@ export default {
 ::placeholder {
   font-size: 18px;
   padding: 5px 10px;
+  color: gray;
 }
 
 

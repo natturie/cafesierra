@@ -103,17 +103,18 @@ export default {
     color: #224957;
 }
 
-.form-agregarcost input, .rol {
+.form-agregarcost input{
   border-radius: 5px;
   width: 290px;
   height: 45px;
   margin: 5px 20px;
 }
 
-::placeholder, .rol {
+::placeholder{
   
   font-size: 18px;
   padding: 5px 10px;
+  color: gray;
 }
 
 
