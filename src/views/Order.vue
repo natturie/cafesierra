@@ -5,9 +5,13 @@
             <div class="verificacion-cliente">
                 <h4>Ingrese ID del cliente</h4>
                 <input class="input-cliente" type="text" />
+                <router-link class="router-bot" to="/checkorder">
                 <button class="verificar">></button>
+                </router-link>
             </div>
-            <button class="sincliente"><router-link class="router-bot" to="/">Continuar sin ID</router-link></button>
+            <button class="sincliente">
+              <router-link class="router-bot" to="/checkorder">Continuar sin ID</router-link>
+              </button>
         </div>
     </div>
 </template>

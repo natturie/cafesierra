@@ -116,7 +116,7 @@ export default {
           }
         })
         .catch((e) => {
-          alert("No se pudo eliminar el cliente");
+          alert("No se pudo eliminar el producto");
           console.log(e);
         });
     },
