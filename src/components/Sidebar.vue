@@ -27,7 +27,9 @@
     <div class="hola">
       <!-- En este mensaje debería ir el nombre del usuario -->
       <h3>Hola {{ msg }}!</h3>
-      <button><img src="../assets/logo-logout.png" alt="" /></button>
+      <button v-on:click="logout">
+        <img src="../assets/logo-logout.png" alt="" />
+      </button>
     </div>
   </div>
 </template>
@@ -38,6 +40,17 @@ export default {
   props: {
     msg: String,
   },
+
+  methods: {
+    logout() {
+      localStorage.clear()
+      this.$emit('logout')
+      this.$router.push({ name: 'Home' })
+    }
+  },
+  created() {
+    this.userId = localStorage.getItem('userId')
+  }
 };
 </script>
 

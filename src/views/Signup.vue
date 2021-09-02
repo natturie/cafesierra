@@ -2,25 +2,18 @@
   <div class="signup">
     <formulario-inicio msg="Registro" />
     <div class="capa-signup">
-      <div class="flex-signup">
+      <form class="flex-signup" @submit.prevent="createUser">
         
-        <input type="text" placeholder="nombres" />
-        <input type="text" placeholder="username" />
-        <input type="text" placeholder="apellidos" />
-        <input type="password" placeholder="password" />
-        <input type="email" placeholder="email" />
-        <!-- <input type="text" placeholder="rol" /> -->
-        <!-- <select name="rol" class="rol">
-          <option>Cajero</option>
-          <option>Administrador</option>
-        </select> -->
-        
-        
-        <!-- <input type="password" placeholder="repeat password" /> -->
-      </div>
-      <div class="signupbtn">
-        <button>Registro</button>
-      </div>
+        <input type="text" placeholder="nombres" v-model="nombres"/>
+        <input type="text" placeholder="username" v-model="username"/>
+        <input type="text" placeholder="apellidos" v-model="apellidos"/>
+        <input type="password" placeholder="password" v-model="password" />
+        <input type="email" placeholder="email" v-model="email" />
+        <div class="signupbtn">
+          <button type="submit">Registro</button>
+        </div>
+      </form>
+      
     </div>
     <router-link to="/"
       ><img class="back-home" src="../assets/home.png" alt="back home"
@@ -31,12 +24,58 @@
 <script>
 //  @ is an alias to /src
 import FormularioInicio from "../components/FormularioInicio.vue";
+import gql from "graphql-tag";
 
 export default {
   name: "FormularioSignup",
   components: {
     FormularioInicio,
   },
+
+  data() {
+    return {
+      username: '',
+      password: '',
+      name: '',
+      apellido: '',
+      email: '',
+    }
+  },
+
+   methods: {
+    async createUser() {
+      await this.$apollo.mutate({
+        mutation: gql`
+          mutation UserCreateMutation($userCreateData: DataInput!) {
+            userCreate(data: $userCreateData) {
+              username,
+              name,
+              apellido,
+              email,
+              password
+            }
+          }`,
+        variables: {
+          userCreateData: {
+            username: this.username,
+            password: this.password,
+            name:this.name,
+            apellido:this.apellido,
+            email: this.email
+          }
+        },
+        
+      })
+      .then(result => {
+        alert('Usuario creado correctamente')
+        console.log(result)
+      })
+      .catch((e) => {
+        alert('No se pudo crear el usuario')
+        console.log(e);
+      })
+    },
+   }
 };
 </script>
 
