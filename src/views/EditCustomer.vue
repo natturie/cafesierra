@@ -2,14 +2,14 @@
   <div class="agregarcost">
       <sidebar msg="Pepito" />
     <div class="form-agregarcost">
-        <h2>Cliente nuevo</h2>
-      <form class="flex-signup" @submit.prevent="clienteAdd">
+        <h2>Editar cliente </h2>
+      <form class="flex-signup" @submit.prevent="editClient">
         <input type="text" placeholder="nombres" v-model="nombres"/>
         <input type="text" placeholder="apellidos" v-model="apellidos" />
         <input type="text" placeholder="cc" v-model="identificacion"/>
         <input type="email" placeholder="email" v-model="correo"/>
         <div class="addbtn">
-            <button type="submit">Agregar cliente</button>
+            <button type="submit">Editar cliente</button>
         </div>
       </form>
       
@@ -30,6 +30,7 @@ export default {
 
   data() {
     return {
+      id: '',
       nombres: '',
       apellidos: '',
       identificacion: '',
@@ -38,16 +39,22 @@ export default {
   },
 
   methods: {
-    async clienteAdd() {
+    async editClient() {
       await this.$apollo.mutate({
         mutation: gql`
-          mutation ClientAddMutation($clientAddClientAdd: ClientAddInput!) {
-            clientAdd(clientAdd: $clientAddClientAdd) {
-              Status
+          mutation ClientUpdateMutation($clientUpdateClient: ClientUpdateInput!) {
+            clientUpdate(client: $clientUpdateClient) {
+              id,
+              nombres,
+              apellidos,
+              identificacion,
+              correo
+              puntos
             }
           }`,
         variables: {
-          clientAddClientAdd: {
+          clientUpdateClient: {
+            id: this.id,
             nombres: this.nombres,
             apellidos: this.apellidos,
             identificacion: this.identificacion,
@@ -57,12 +64,12 @@ export default {
         
       })
       .then(result => {
-        alert('cliente creado exitosamente!')
+        alert('cliente editado exitosamente!')
         console.log(result)
         this.customers(result)
       })
       .catch((e) => {
-        alert('No se pudo crear el cliente')
+        alert('No se pudo editar el cliente')
         console.log(e);
       })
     },

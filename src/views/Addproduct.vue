@@ -3,27 +3,73 @@
       <sidebar msg="Pepito" />
     <div class="form-agregarprod">
         <h2>Producto nuevo</h2>
-      <div class="flex-signup">
-        <input type="text" placeholder="nombre" />
-        <input type="text" placeholder="categoria" />
-        <input type="text" placeholder="cantidad" />
-        <input type="string" placeholder="precio" />
-      </div>
-      <div class="addbtn">
-        <router-link to="/products"><button>Agregar producto</button></router-link>
-      </div>
+      <form class="flex-signup" @submit.prevent="productAdd">
+        <input type="text" placeholder="nombre" v-model="productName"/>
+        <input type="text" placeholder="categoria" v-model="category" />
+        <input type="number" placeholder="cantidad" v-model="stock" />
+        <input type="string" placeholder="precio" v-model="price"/>
+        <div class="addbtn">
+          <button  type="submit">Agregar producto</button>
+        </div>
+      </form>
+      
     </div>
   </div>
 </template>
 
 <script>
 import Sidebar from "../components/Sidebar.vue";
+import gql from "graphql-tag";
 
 export default {
   name: "Addproduct",
   components: {
     Sidebar,
   },
+
+  data() {
+    return {
+      productName: '',
+      category: '',
+      stock: 0,
+      price: ''
+    }
+  },
+
+  methods: {
+    async productAdd() {
+      await this.$apollo.mutate({
+        mutation: gql`
+          mutation ProductAddMutation($productAddProductAdd: ProductAddInput!) {
+            productAdd(productAdd: $productAddProductAdd) {
+              Status
+            }
+          }`,
+        variables: {
+          productAddProductAdd: {
+            productName: this.productName,
+            category: this.category,
+            stock: this.stock,
+            price: this.price
+          }
+        },
+        
+      })
+      .then(result => {
+        alert('producto creado exitosamente!')
+        console.log(result)
+        this.customers(result)
+      })
+      .catch((e) => {
+        alert('No se pudo crear el producto')
+        console.log(e);
+      })
+    },
+    customers(result) {
+      console.log(result)
+      this.$router.push({ name: 'Products' })
+    }
+  }
 };
 </script>
 

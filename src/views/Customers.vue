@@ -25,10 +25,12 @@
             <td>{{client.correo}}</td>
             <td>{{client.puntos}}</td>
             <td>
-              <button><img src="../assets/editar.png" alt="editar" /></button>
+              <button v-on:click="editClient(client.id)">
+                <img src="../assets/editar.png" alt="editar" />
+              </button>
             </td>
             <td >
-              <button v-on:click="clienteDelete()">
+              <button v-on:click="clienteDelete(client.id)">
                 <img src="../assets/eliminar.png" alt="eliminar" />
               </button>
             </td>
@@ -81,7 +83,9 @@ export default {
   },
 
   methods: {
-    async clienteDelete() {
+    
+    async clienteDelete(id) {
+      console.log(id)
       await this.$apollo.mutate({
         mutation: gql`
           mutation ClientDeleteMutation($clientDeleteId: String!) {
@@ -91,9 +95,7 @@ export default {
           }`,
 
         variables: {
-          clientDeleteId: {
-            id:this.id
-          }
+          clientDeleteId: id
         },
         
       })
@@ -105,7 +107,12 @@ export default {
         alert('No se pudo eliminar el cliente')
         console.log(e);
       })
-    }
+    },
+
+    editClient(id){
+      console.log(id)
+      this.$router.push({ name: 'EditCustomer' })
+   },
   }
 };
 </script>

@@ -2,7 +2,7 @@
   <div class="agregarprod">
       <sidebar msg="Pepito" />
     <div class="form-agregarprod">
-        <h2>Producto nuevo</h2>
+        <h2>Editar producto</h2>
       <div class="flex-signup">
         <input type="text" placeholder="nombre" />
         <input type="text" placeholder="categoria" />
@@ -10,7 +10,7 @@
         <input type="string" placeholder="precio" />
       </div>
       <div class="addbtn">
-        <router-link to="/products"><button>Agregar producto</button></router-link>
+        <router-link to="/products"><button>Editar producto</button></router-link>
       </div>
     </div>
   </div>

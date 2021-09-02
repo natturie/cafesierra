@@ -23,7 +23,7 @@
             <td>{{product.stock}}</td>
             <td>{{product.price}}</td>
             <td><button><img src="../assets/editar.png" alt="editar"></button></td>
-            <td><button><img src="../assets/eliminar.png" alt="eliminar"></button></td>
+            <td><button v-on:click="productDelete(product.id)"><img src="../assets/eliminar.png" alt="eliminar"></button></td>
             </tr>
 
         </tbody>
@@ -68,6 +68,38 @@ export default {
         username: localStorage.getItem('username')
       }
     }
+  },
+
+  methods: {
+    
+    async productDelete(id) {
+      console.log(id)
+      await this.$apollo.mutate({
+        mutation: gql`
+          mutation ProductDeleteMutation($productDeleteId: Int!) {
+            productDelete(id: $productDeleteId) {
+              Status
+            }
+          }`,
+
+        variables: {
+          productDeleteId: id
+        },
+        
+      })
+      .then(result => {
+        alert('eliminado exitosamente!')
+        console.log(result)
+      })
+      .catch((e) => {
+        alert('No se pudo eliminar el cliente')
+        console.log(e);
+      })
+    },
+
+    editClient(){
+      this.$router.push({ name: 'EditCustomer' })
+   },
   }
 };
 </script>
