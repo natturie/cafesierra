@@ -14,7 +14,7 @@
             <th>mail</th>
             <th>Puntos</th>
             <th>Editar</th>
-            <th>Elimnar</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -128,4 +128,5 @@ color: #224957;
   cursor: pointer;
   background: none;
 }
+
 </style>

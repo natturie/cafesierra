@@ -5,13 +5,13 @@
         <img class="logo" src="../assets/logo.png" alt="logo sierra" />
       </router-link>
       <nav class="navegacion">
-        <li>
+        <li active-background>
           <router-link class="router-bot" to="/costumers">Clientes</router-link>
         </li>
-        <li>
+        <li active-background>
           <router-link class="router-bot" to="/products">Productos</router-link>
         </li>
-        <li>
+        <li active-background>
           <router-link class="router-bot" to="/order">Facturar</router-link>
         </li>
       </nav>
@@ -45,6 +45,7 @@ export default {
 .side-menu {
   background: #224957;
   width: 20%;
+  position: fixed;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -61,15 +62,19 @@ export default {
 
 .navegacion li {
   width: 200px;
-  border: blueviolet 2px solid;
+  /* border: blueviolet 2px solid; */
   border-radius: 8px;
   list-style: none;
   padding: 12px;
-  margin: 10px;
+  margin: 12px;
   text-align: center;
   font-family: "Lexend", sans-serif;
   font-size: 24px;
   cursor: pointer;
+}
+
+.navegacion li router-link{
+  width: 100%;
 }
 
 .router-bot {
@@ -95,6 +100,7 @@ margin-top: 190px;
 
 .hola {
   position: absolute;
+  position: fixed;
   top: 30px;
   right: 30px;
   /* width: 20%; */
@@ -122,5 +128,11 @@ margin-top: 190px;
 
 .hola img {
   width: 60px;
+}
+
+.navegacion a.router-link-exact-active{
+background: #20df7f;
+border-radius: 8px;
+padding: 12px 25px;
 }
 </style>

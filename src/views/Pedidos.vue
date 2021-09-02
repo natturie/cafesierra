@@ -12,7 +12,7 @@
             <th>IVA</th>
             <th>Total</th>
             <th>Puntos</th>
-            <th>Elimnar</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>

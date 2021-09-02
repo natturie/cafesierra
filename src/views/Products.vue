@@ -12,7 +12,7 @@
           <th>Cantidad</th>
           <th>Precio</th>
           <th>Editar</th>
-          <th>Elimnar</th>
+          <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -103,10 +103,11 @@ color: #224957;
 
 .product-table{
   width: 100%;
-  margin-top: 40px;
+  margin: 40px 0 60px 0;
   font-size: 20px;
   color: #224957;
   text-align: center;
+  
 }
 
 .product-table thead{

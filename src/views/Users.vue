@@ -12,7 +12,7 @@
             <th>Apellido</th>
             <th>Correo</th>
             <th>Editar</th>
-            <th>Elimnar</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
