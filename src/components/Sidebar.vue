@@ -43,14 +43,14 @@ export default {
 
   methods: {
     logout() {
-      localStorage.clear()
-      this.$emit('logout')
-      this.$router.push({ name: 'Home' })
-    }
+      localStorage.clear();
+      this.$emit("logout");
+      this.$router.push({ name: "Home" });
+    },
   },
   created() {
-    this.userId = localStorage.getItem('userId')
-  }
+    this.userId = localStorage.getItem("userId");
+  },
 };
 </script>
 
@@ -86,7 +86,7 @@ export default {
   cursor: pointer;
 }
 
-.navegacion li router-link{
+.navegacion li router-link {
   width: 100%;
 }
 
@@ -96,7 +96,13 @@ export default {
 }
 
 .menu-botones {
-margin-top: 190px;
+  margin-top: 230px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 .logo-usuarios {
@@ -113,6 +119,7 @@ margin-top: 190px;
 
 .hola {
   position: absolute;
+  background: white;
   position: fixed;
   top: 30px;
   right: 30px;
@@ -125,6 +132,7 @@ margin-top: 190px;
   font-family: "Lexend", sans-serif;
   font-size: 26px;
   color: #224957;
+  
 }
 
 /* .hola h3 {
@@ -143,9 +151,9 @@ margin-top: 190px;
   width: 60px;
 }
 
-.navegacion a.router-link-exact-active{
-background: #20df7f;
-border-radius: 8px;
-padding: 12px 25px;
+.navegacion a.router-link-exact-active {
+  background: #20df7f;
+  border-radius: 8px;
+  padding: 12px 25px;
 }
 </style>

@@ -36,11 +36,11 @@
 
 .formulario {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-content: center;
   align-items: center;
-  width: 40%;
-  padding: 100px;
+  width: 38%;
+  padding: 150px 50px;
 }
 
 .tituloInicio {

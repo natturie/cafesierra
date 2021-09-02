@@ -5,7 +5,7 @@
       <h3>Clientes</h3>
 
       <button class="add-customer">
-        <router-link class="router-bot" to="/addcustomer"
+        <router-link class="router-bot" to="/customers/add"
           >Agregar cliente</router-link
         >
       </button>

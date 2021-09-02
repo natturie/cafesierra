@@ -1,16 +1,16 @@
 <template>
   <div class="check-order">
     <sidebar msg="Pepito" />
-    <div class="tabla-product">
-      <h3>Facturar</h3>
-      <h4>Seleccionar medio de pago</h4>
+    <div class="select-product">
+      <h3 class="titulo1">Facturar</h3>
+      <h4 class="titulo2">Seleccionar medio de pago</h4>
       <select class="select-pago" name="medioPago">
         <option>Efectivo</option>
         <option>Crédito</option>
       </select>
-      <h4>Seleccionar Productos</h4>
+      <h4 class="titulo2">Seleccionar Productos</h4>
       <router-link to="/order/car">
-      <button><img src="../assets/carrito.png" alt=""></button>
+      <button class="ir-carrito"><img src="../assets/carrito.png" alt=""></button>
       </router-link>
       <section v-if="products.length > 0" class="products-grid">
         <ProductCard
@@ -70,7 +70,6 @@ export default {
           id: "lkd45t4oi5",
           name: "Producto 5",
           price: 5000,
-          imageSrc: "https://img.lalr.co/cms/2020/06/26143643/beneficios-tomar-cafe-diario-1.jpg?size=xl",
           limit: 3,
         },
         {
@@ -99,7 +98,7 @@ export default {
 </script>
 
 <style scoped>
-.tabla-product {
+.select-product {
   width: 70%;
   position: absolute;
   top: 18%;
@@ -107,13 +106,13 @@ export default {
   font-family: "Lexend", sans-serif;
 }
 
-h3 {
+.titulo1 {
   color: #20df7f;
   font-size: 36px;
   margin-left: 35px;
 }
 
-h4 {
+.titulo2 {
   color: #224957;
   font-size: 23px;
 }
@@ -121,10 +120,11 @@ h4 {
 .select-pago {
   padding: 10px;
   margin-top: -20px;
+  cursor: pointer;
 }
 
 .products-grid {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
@@ -132,6 +132,23 @@ h4 {
   align-content: stretch;
   padding: 40px 10%;
   width: 100%;
-  box-sizing: border-box;
+  box-sizing: border-box; */
+
+  display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: stretch;
+  padding: 40px 10%;
+}
+
+.ir-carrito{
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: fixed;
+  right: 3%;
+  top: 40%;
 }
 </style>

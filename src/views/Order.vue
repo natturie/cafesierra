@@ -1,5 +1,6 @@
 <template>
-    <div class="orders">
+<div></div>
+    <!-- <div class="orders">
         <sidebar msg="Pepito" />
         <div class="order-home">
             <div class="verificacion-cliente">
@@ -13,21 +14,21 @@
               <router-link class="router-bot" to="/checkorder">Continuar sin ID</router-link>
               </button>
         </div>
-    </div>
+    </div> -->
 </template>
 
 <script>
-import Sidebar from "../components/Sidebar.vue";
-export default {
-  name: "Order",
-  components: {
-    Sidebar,
-  },
-};
+// import Sidebar from "../components/Sidebar.vue";
+// export default {
+//   name: "Order",
+//   components: {
+//     Sidebar,
+//   },
+// };
 </script>
 
 <style scoped>
-.order-home {
+/* .order-home {
   width: 70%;
   position: absolute;
   top: 30%;
@@ -75,6 +76,6 @@ h4{
 .router-bot{
 text-decoration: none;
 color: #224957;
-}
+} */
 
 </style>

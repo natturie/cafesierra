@@ -4,7 +4,7 @@
     <div class="factura">
         <!-- <h3>Productos</h3>
       <button class="add-product">
-        <router-link class="router-bot" to="/addproduct"
+        <router-link class="router-bot" to="/products/add"
           >Agregar producto</router-link
         >
       </button> -->
