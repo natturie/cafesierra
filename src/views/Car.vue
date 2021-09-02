@@ -36,7 +36,7 @@
         </tbody>
       </table>
       <h3>Total <span>Total factura</span></h3>
-      <button>Pagar</button>
+      <button class="pay-products">Pagar</button>
     </div>
     </div>
   </div>
@@ -108,4 +108,18 @@ h3 {
   cursor: pointer;
   background: none;
 }
+
+.pay-products{
+   background: #20DF7F;
+    border-radius: 5px;
+    border-style: none;
+    width: 290px;
+    height: 45px;
+    padding: 10px;
+    margin: 10px 0;
+    color: #224957;
+    font-family: "Lexend", sans-serif;
+    font-size: 22px;
+    cursor: pointer;
+  }
 </style>

@@ -3,7 +3,7 @@
     <formulario-inicio msg="Ingresar"/> 
     <form class="capa-login"  @submit.prevent="authenticate">
         <input class="input-form" type="text" placeholder="username" v-model="username">
-        <input type="password" placeholder="password" v-model="password">
+        <input class="input-form" type="password" placeholder="password" v-model="password">
         <button type="submit">Login</button>
     </form>
     <router-link to="/"><img class="back-home" src="../assets/home.png" alt="back home"></router-link>
@@ -80,7 +80,7 @@ import gql from "graphql-tag";
   position: absolute;
 }
 
-.capa-login input{
+.capa-login .input-form{
   background: #224957e5;
   border-radius: 5px;
   border-style: none;

@@ -4,11 +4,11 @@
     <div class="capa-signup">
       <form class="flex-signup" @submit.prevent="createUser">
         
-        <input type="text" placeholder="nombres" v-model="nombres"/>
-        <input type="text" placeholder="username" v-model="username"/>
-        <input type="text" placeholder="apellidos" v-model="apellidos"/>
-        <input type="password" placeholder="password" v-model="password" />
-        <input type="email" placeholder="email" v-model="email" />
+        <input class="signup-input" type="text" placeholder="nombres" v-model="nombres"/>
+        <input class="signup-input" type="text" placeholder="username" v-model="username"/>
+        <input class="signup-input" type="text" placeholder="apellidos" v-model="apellidos"/>
+        <input class="signup-input" type="password" placeholder="password" v-model="password" />
+        <input class="signup-input" type="email" placeholder="email" v-model="email" />
         <div class="signupbtn">
           <button type="submit">Registro</button>
         </div>
@@ -93,7 +93,7 @@ export default {
   position: absolute;
 }
 
-.capa-signup input {
+.capa-signup .signup-input {
   background: #224957e5;
   border-radius: 5px;
   border-style: none;
