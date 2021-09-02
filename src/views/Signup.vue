@@ -15,9 +15,8 @@
       </form>
       
     </div>
-    <router-link to="/"
-      ><img class="back-home" src="../assets/home.png" alt="back home"
-    /></router-link>
+    <router-link to="/"><img class="back-home" src="../assets/home.png" alt="back home"/>
+    </router-link>
   </div>
 </template>
 
@@ -129,5 +128,13 @@ export default {
   font-size: 22px;
   cursor: pointer;
 }
+
+.back-home{
+    position: absolute;
+    width: 7%;
+    top: 1px;
+    margin: 20px;
+    cursor: pointer;
+  }
 </style>
 
