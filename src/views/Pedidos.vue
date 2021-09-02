@@ -22,7 +22,7 @@
             <td>{{order.detail.pay_method}}</td>
             <td>{{order.detail.products.length}}</td>
             
-            <td>{{total(order.detail.products)}}</td>
+            <td>{{subtotal(order.detail.products)}}</td>
             <td>{{total(order.detail.products)}}</td>
             <!-- <td>
               <button>
