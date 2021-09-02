@@ -6,7 +6,7 @@
       </router-link>
       <nav class="navegacion">
         <li active-background>
-          <router-link class="router-bot" to="/costumers">Clientes</router-link>
+          <router-link class="router-bot" to="/customers">Clientes</router-link>
         </li>
         <li active-background>
           <router-link class="router-bot" to="/products">Productos</router-link>

@@ -1,14 +1,14 @@
 <template>
   <div class="clientes">
     <sidebar msg="Pepito" />
-    <div class="tabla-costumer">
+    <div class="tabla-customer">
       <h3>Clientes</h3>
 
-      <button class="add-costumer"><router-link class="router-bot" to="/addcostumer">Agregar cliente</router-link></button>
-      <table class="costumer-table" v-if="clientAll.length > 0">
+      <button class="add-customer"><router-link class="router-bot" to="/addcustomer">Agregar cliente</router-link></button>
+      <table class="customer-table" v-if="clientAll.length > 0" >
         <thead>
           <tr>
-            <th>ID</th>
+           
             <th>Nombre</th>
             <th>cc</th>
             <th>mail</th>
@@ -19,16 +19,16 @@
         </thead>
         <tbody>
           <tr v-for="client in clientAll" :key="client.id">
-            <td>0000</td>
-            <td>Pepita Perez</td>
-            <td>1000111333</td>
-            <td>pepita@gmail.com</td>
-            <td>123</td>
+            
+            <td>{{client.nombres}} {{client.apellidos}}</td>
+            <td>{{client.identificacion}}</td>
+            <td>{{client.correo}}</td>
+            <td>{{client.puntos}}</td>
             <td>
               <button><img src="../assets/editar.png" alt="editar" /></button>
             </td>
-            <td>
-              <button>
+            <td >
+              <button v-on:click="clienteDelete()">
                 <img src="../assets/eliminar.png" alt="eliminar" />
               </button>
             </td>
@@ -44,7 +44,7 @@ import Sidebar from "../components/Sidebar.vue";
 import gql from 'graphql-tag'
 
 export default {
-  name: "Costumers",
+  name: "Customers",
   components: {
     Sidebar,
   },
@@ -72,17 +72,45 @@ export default {
           correo,
           puntos
           }
-      }
-      `,
+      }`,
       variables: {
         username: localStorage.getItem('username')
       }
+    },
+    
+  },
+
+  methods: {
+    async clienteDelete() {
+      await this.$apollo.mutate({
+        mutation: gql`
+          mutation ClientDeleteMutation($clientDeleteId: String!) {
+            clientDelete(id: $clientDeleteId) {
+              Status
+            }
+          }`,
+
+        variables: {
+          clientDeleteId: {
+            id:this.id
+          }
+        },
+        
+      })
+      .then(result => {
+        alert('eliminado exitosamente!')
+        console.log(result)
+      })
+      .catch((e) => {
+        alert('No se pudo eliminar el cliente')
+        console.log(e);
+      })
     }
   }
 };
 </script>
 <style scoped>
-.tabla-costumer {
+.tabla-customer {
   width: 70%;
   position: absolute;
   top: 18%;
@@ -95,7 +123,7 @@ h3 {
   font-size: 36px;
   margin-left: 35px;
 }
-.add-costumer {
+.add-customer {
   background: #20DF7F;
   margin-left: 35px;
   padding: 8px 16px;
@@ -110,7 +138,7 @@ text-decoration: none;
 color: #224957;
 }
 
-.costumer-table {
+.customer-table {
   width: 100%;
   margin-top: 40px;
   font-size: 20px;
@@ -118,12 +146,12 @@ color: #224957;
   text-align: center;
 }
 
-.costumer-table thead {
+.customer-table thead {
   background: #306966;
   color: white;
 }
 
-.costumer-table button {
+.customer-table button {
   border: none;
   cursor: pointer;
   background: none;

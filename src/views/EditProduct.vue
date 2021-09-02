@@ -1,16 +1,16 @@
 <template>
-  <div class="agregarcost">
+  <div class="agregarprod">
       <sidebar msg="Pepito" />
-    <div class="form-agregarcost">
-        <h2>Cliente nuevo</h2>
+    <div class="form-agregarprod">
+        <h2>Producto nuevo</h2>
       <div class="flex-signup">
         <input type="text" placeholder="nombre" />
-        <input type="text" placeholder="apellido" />
-        <input type="text" placeholder="cc" />
-        <input type="email" placeholder="mail" />
+        <input type="text" placeholder="categoria" />
+        <input type="text" placeholder="cantidad" />
+        <input type="string" placeholder="precio" />
       </div>
       <div class="addbtn">
-        <router-link to="/costumers"><button>Agregar cliente</button></router-link>
+        <router-link to="/products"><button>Agregar producto</button></router-link>
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@
 import Sidebar from "../components/Sidebar.vue";
 
 export default {
-  name: "Addcostumer",
+  name: "EditProduct",
   components: {
     Sidebar,
   },
@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style scoped>
-.form-agregarcost {
+.form-agregarprod {
   width: 50%;
   height: 50%;
   top: 30%;
@@ -43,21 +43,20 @@ export default {
   font-family: "Lexend", sans-serif;
 }
 
-.form-agregarcost h2{
+.form-agregarprod h2{
     margin-bottom: 40px;
     font-size: 28px;
     color: #224957;
 }
 
-.form-agregarcost input, .rol {
+.form-agregarprod input {
   border-radius: 5px;
   width: 290px;
   height: 45px;
   margin: 5px 20px;
 }
 
-::placeholder, .rol {
-  
+::placeholder {
   font-size: 18px;
   padding: 5px 10px;
 }

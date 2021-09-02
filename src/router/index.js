@@ -23,14 +23,19 @@ const routes = [
     component: () => import('../views/Welcome.vue')
   },
   {
-    path: '/costumers',
-    name: 'Costumers',
-    component: () => import('../views/Costumers.vue')
+    path: '/customers',
+    name: 'Customers',
+    component: () => import('../views/Customers.vue')
   },
   {
-    path: '/addcostumer',
-    name: 'Addcostumer',
-    component: () => import('../views/Addcostumer.vue')
+    path: '/addcustomer',
+    name: 'Addcustomer',
+    component: () => import('../views/Addcustomer.vue')
+  },
+  {
+    path: '/editcustomer',
+    name: 'EditCustomer',
+    component: () => import('../views/EditCustomer.vue')
   },
   {
     path: '/products',
@@ -41,6 +46,11 @@ const routes = [
     path: '/addproduct',
     name: 'Addproduct',
     component: () => import('../views/Addproduct.vue')
+  },
+  {
+    path: '/editproduct',
+    name: 'EditProduct',
+    component: () => import('../views/EditProduct.vue')
   },
   {
     path: '/order',
