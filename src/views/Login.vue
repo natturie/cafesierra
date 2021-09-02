@@ -81,12 +81,14 @@ import gql from "graphql-tag";
 }
 
 .capa-login input{
-  background: #224957;
+  background: #224957e5;
   border-radius: 5px;
   border-style: none;
   width: 290px;
   height: 45px;
   margin: 10px 0;
+  font-family: "Lexend", sans-serif;
+  color: white;
 }
 
 ::placeholder { 

@@ -93,16 +93,18 @@ export default {
   position: absolute;
 }
 
-.capa-signup input, .rol {
-  background: #224957;
+.capa-signup input {
+  background: #224957e5;
   border-radius: 5px;
   border-style: none;
   width: 290px;
   height: 45px;
   margin: 5px 20px;
+  font-family: "Lexend", sans-serif;
+  color: white;
 }
 
-::placeholder, .rol {
+::placeholder {
   color: white;
   font-family: "Lexend", sans-serif;
   font-size: 18px;
