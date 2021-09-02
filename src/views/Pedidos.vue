@@ -3,24 +3,25 @@
     <sidebar msg="Pepito" />
     <div class="tabla-pedido">
       <h3>Historial pedidos</h3>
-      <table class="pedido-table">
+      <table class="pedido-table" v-if="orderAll.length > 0">
         <thead>
           <tr>
             <th>ID pedido</th>
             <th>Cliente</th>
-            <th>N° prods</th>
-            <th>IVA</th>
+            <th>M. pago</th>
+            <th>N productos</th>
             <th>Total</th>
             <th>Puntos</th>
             <th>Eliminar</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>0000</td>
-            <td>1000324980</td>
-            <td>3</td>
-            <td>1900</td>
+        <tbody >
+          <tr v-for="order in orderAll" :key="order.order_id" >
+            <td>{{order.order_id}}</td>
+            <td>{{order.detail.client_id}}</td>
+            <td>{{order.detail.pay_method}}</td>
+            <td>{{order.detail.products.length}}</td>
+            
             <td>10000</td>
             <td>10</td>
             <td>
@@ -29,19 +30,7 @@
               </button>
             </td>
           </tr>
-          <tr>
-            <td>0000</td>
-            <td>1000324980</td>
-            <td>3</td>
-            <td>1900</td>
-            <td>10000</td>
-            <td>10</td>
-            <td>
-              <button>
-                <img src="../assets/eliminar.png" alt="eliminar" />
-              </button>
-            </td>
-          </tr>
+         
         </tbody>
       </table>
     </div>
@@ -50,6 +39,8 @@
 
 <script>
 import Sidebar from "../components/Sidebar.vue";
+import gql from "graphql-tag";
+
 export default {
   name: "pedidos",
   components: {
@@ -58,10 +49,36 @@ export default {
   data() {
     return {
       username: null,
-      productAll: []
+      orderAll: []
     }
   },
-  
+  apollo: {
+    orderAll: {
+      query: gql`
+        query Query {
+          orderAll {
+            order_id
+              detail {
+              client_id
+              pay_method
+              products {
+                  product_id
+                  amount
+                  unit_price
+                  iva
+                  subtotal_price
+                  total_price
+      }
+    }
+  }
+}
+      `,
+      variables: {
+        username: localStorage.getItem("username"),
+      },
+    },
+  },
+
 };
 </script>
 <style scoped>
