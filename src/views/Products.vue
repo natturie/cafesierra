@@ -26,7 +26,9 @@
             <td>{{ product.stock }}</td>
             <td>{{ product.price }}</td>
             <td>
-              <button><img src="../assets/editar.png" alt="editar" /></button>
+              <button v-on:click="editProduct">
+                <img src="../assets/editar.png" alt="editar" />
+                </button>
             </td>
             <td>
               <button v-on:click="productDelete(product.id)">
@@ -119,8 +121,8 @@ export default {
         });
     },
 
-    editClient() {
-      this.$router.push({ name: "EditCustomer" });
+    editProduct() {
+      this.$router.push({ name: "EditProduct" });
     },
   },
 };
