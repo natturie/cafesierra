@@ -10,9 +10,9 @@
             <th>Cliente</th>
             <th>M. pago</th>
             <th>N productos</th>
-            <th>Total</th>
-            <th>Puntos</th>
-            <th>Eliminar</th>
+            <th>subotal</th>
+            <th>total</th>
+            <!-- <th>Eliminar</th> -->
           </tr>
         </thead>
         <tbody >
@@ -22,13 +22,13 @@
             <td>{{order.detail.pay_method}}</td>
             <td>{{order.detail.products.length}}</td>
             
-            <td>10000</td>
-            <td>10</td>
-            <td>
+            <td>{{total(order.detail.products)}}</td>
+            <td>{{total(order.detail.products)}}</td>
+            <!-- <td>
               <button>
                 <img src="../assets/eliminar.png" alt="eliminar" />
               </button>
-            </td>
+            </td> -->
           </tr>
          
         </tbody>
@@ -78,7 +78,22 @@ export default {
       },
     },
   },
-
+ methods: {
+   total(productos) {
+      let sum=0;
+      for (let i=0; i<productos.length;i++){
+        sum=sum+productos[i].total_price
+      }
+      return sum
+    },
+   subtotal(productos) {
+      let sum=0;
+      for (let i=0; i<productos.length;i++){
+        sum=sum+productos[i].subtotal_price
+      }
+      return sum
+    },
+ }
 };
 </script>
 <style scoped>
