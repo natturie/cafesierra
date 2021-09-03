@@ -3,11 +3,11 @@
     <img class="img-defecto"
       src="https://ellatinoonline.com/wp-content/uploads/2021/07/shutterstock_1387420256-scaled.jpg"
     />
-    <h4>{{ product.name }}</h4>
+    <h4>{{ product.productName }}</h4>
     <p>{{ productPrice }}</p>
 
     <input class="stockpro" type="number" v-model="quantity" disabled />
-    <button class="sumaruno" v-if="product.limit > quantity" @click="quantity += 1">+</button>
+    <button class="sumaruno" v-if="product.stock > quantity" @click="quantity += 1">+</button>
     <button class="restaruno" v-if="quantity > 0" @click="quantity -= 1">-</button>
     <br>
     <button class="add-to-cart" @click="addToCart()" :disabled="quantity === 0">Add to cart</button>
@@ -39,11 +39,28 @@ export default {
   },
   methods: {
     addToCart() {
-      this.$emit("add", {
-        quantity: this.quantity,
-        id: this.product.id,
+      let data =  {
+        productName: this.product.productName,
+        amount: this.quantity,
+        product_id: this.product.id,
+        price: this.product.price,
         total: this.quantity * this.product.price,
-      });
+      }
+
+      console.log(data)
+
+      if (typeof(Storage) !== "undefined") {
+        let cart = [];
+        // Parse the serialized data back into an aray of objects
+        cart = JSON.parse(localStorage.getItem('cart')) || [];
+        // Push the new data (whether it be an object or anything else) onto the array
+        cart.push(data);
+        // Re-serialize the array back into a string and store it in localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+      } else {
+        console.log("LocalStorage no disponible.")
+      }
+
       this.quantity = 0;
     },
   },

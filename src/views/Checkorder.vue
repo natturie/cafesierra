@@ -12,9 +12,9 @@
       <router-link to="/order/car">
       <button class="ir-carrito"><img src="../assets/carrito.png" alt=""></button>
       </router-link>
-      <section v-if="products.length > 0" class="products-grid">
+      <section v-if="productAll.length > 0" class="products-grid">
         <ProductCard
-          v-for="product in products"
+          v-for="product in productAll"
           :key="product.id"
           :product="product"
           @add="addToCart($event)"
@@ -26,7 +26,8 @@
 
 <script>
 import Sidebar from "../components/Sidebar.vue";
-import ProductCard from '@/components/ProductCard'
+import ProductCard from '@/components/ProductCard';
+import gql from "graphql-tag";
 
 export default {
   name: "Checkorder",
@@ -35,57 +36,35 @@ export default {
     ProductCard
   },
   data() {
-    //   return {
-    //     username: null,
-    //     productAll: [],
-    //   };
-    // },
     return {
-      products: [
-        {
-          id: "fasdfasdf",
-          name: "Producto 1",
-          price: 25000,
-          limit: 40,
-        },
-        {
-          id: "t34t4rgr",
-          name: "Producto 2",
-          price: 75000,
-          limit: 4,
-        },
-        {
-          id: "jghj67jg",
-          name: "Producto 3",
-          price: 215000,
-          limit: 10,
-        },
-        {
-          id: "65thfghfgh",
-          name: "Producto 4",
-          price: 15000,
-          limit: 20,
-        },
-        {
-          id: "lkd45t4oi5",
-          name: "Producto 5",
-          price: 5000,
-          limit: 3,
-        },
-        {
-          id: "gsdfigsoij43",
-          name: "Producto 6",
-          price: 35000,
-          limit: 8,
-        },
-      ],
+      productAll: [],
       cart: [],
     };
   },
+  apollo: {
+    productAll: {
+      query: gql`
+        query Query {
+          productAll {
+            id
+            productName
+            category
+            stock
+            price
+          }
+        }
+      `,
+      variables: {
+        username: localStorage.getItem("username"),
+      },
+    },
+  },
   beforeCreate() {
     console.log(2);
+    
   },
   created() {
+    this.username = localStorage.getItem("username");
     console.log("Hola");
   },
   methods: {
